@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CORTIS | COLOR OUTSIDE THE LINES</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 7%;
+
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .logo span {
+            color: #b7ff00;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #b7ff00;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)),
+                url("https://cdn2.tuoitre.vn/471584752817336320/2026/2/4/edit-cortis-spur-17701977804221053335185.jpeg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(70px, 14vw, 170px);
+            letter-spacing: 15px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #b7ff00;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 20px;
+            letter-spacing: 5px;
+        }
+
+        .hero button {
+            margin-top: 35px;
+            padding: 14px 30px;
+
+            background: #b7ff00;
+            color: black;
+
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.08);
+            background: white;
+        }
+
+        /* GENERAL SECTION */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+        }
+
+        .section-title span {
+            color: #b7ff00;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #101010;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #cccccc;
+        }
+
+        .highlight {
+            color: #b7ff00;
+            font-weight: bold;
+        }
+
+        /* MEMBERS */
+
+        .members {
+            background: #050505;
+        }
+
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .member {
+            position: relative;
+            height: 480px;
+            overflow: hidden;
+            background: #151515;
+        }
+
+        .member img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .member:hover img {
+            transform: scale(1.08);
+        }
+
+        .member-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            padding: 25px 15px;
+
+            background: linear-gradient(
+                transparent,
+                rgba(0,0,0,0.95)
+            );
+        }
+
+        .member-info h3 {
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+
+        .member-info p {
+            margin-top: 5px;
+            color: #b7ff00;
+            font-size: 13px;
+        }
+
+        /* CREATOR SECTION */
+
+        .creator {
+            background: #b7ff00;
+            color: black;
+            text-align: center;
+        }
+
+        .creator h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .creator p {
+            max-width: 850px;
+            margin: auto;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+        /* ALBUMS */
+
+        .albums {
+            background: #0c0c0c;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .album {
+            padding: 35px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .album:hover {
+            border-color: #b7ff00;
+            transform: translateY(-5px);
+        }
+
+        .album h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .album .date {
+            color: #b7ff00;
+            margin-bottom: 20px;
+        }
+
+        .album p {
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        .songs {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .song {
+            border: 1px solid #555;
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        /* SONGS */
+
+        .tracks {
+            background: #050505;
+        }
+
+        .track-list {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 22px 10px;
+
+            border-bottom: 1px solid #333;
+        }
+
+        .track:hover {
+            color: #b7ff00;
+        }
+
+        .track-number {
+            color: #777;
+            margin-right: 20px;
+        }
+
+        .track-name {
+            font-size: 19px;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            background: #111;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            filter: brightness(1.2);
+        }
+
+        /* QUOTE */
+
+        .quote {
+            min-height: 400px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.7),
+                    rgba(0,0,0,0.8)
+                ),
+                url("https://image.idntimes.com/post/20251228/snapinsta-ai_3712677767109671095_664b706b-e5be-4929-b2cc-01441d8338b7.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .quote h2 {
+            font-size: 50px;
+            max-width: 900px;
+            letter-spacing: 3px;
+        }
+
+        .quote span {
+            color: #b7ff00;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            background: black;
+        }
+
+        footer h2 {
+            font-size: 35px;
+            letter-spacing: 8px;
+        }
+
+        footer p {
+            margin-top: 15px;
+            color: #777;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+
+            nav ul {
+                gap: 12px;
+            }
+
+            .member-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .album-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            nav {
+                padding: 15px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                letter-spacing: 5px;
+            }
+
+            .member-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .member {
+                height: 500px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote h2 {
+                font-size: 32px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            C<span>O</span>RTIS
+        </div>
+
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#members">MEMBERS</a></li>
+            <li><a href="#albums">MUSIC</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>C<span>O</span>RTIS</h1>
+
+            <p>COLOR OUTSIDE THE LINES</p>
+
+            <button onclick="document.getElementById('about').scrollIntoView()">
+                EXPLORE CORTIS
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2 class="section-title">
+            WHO ARE <span>CORTIS?</span>
+        </h2>
+
+        <div class="about-container">
+
+            <p>
+                CORTIS is a five-member boy group under
+                <span class="highlight">BIGHIT MUSIC</span>.
+                The group consists of MARTIN, JAMES, JUHOON,
+                SEONGHYEON and KEONHO.
+            </p>
+
+            <br>
+
+            <p>
+                The name CORTIS comes from the phrase
+                <span class="highlight">"COLOR OUTSIDE THE LINES"</span>,
+                representing the group's desire to think differently,
+                experiment freely and create without being limited
+                by conventional boundaries.
+            </p>
+
+            <br>
+
+            <p>
+                CORTIS is known for its collaborative creative approach.
+                Instead of simply performing material created by others,
+                the members participate in songwriting, composition,
+                choreography, video production and visual direction.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMBERS -->
+
+    <section class="members" id="members">
+
+        <h2 class="section-title">
+            THE <span>MEMBERS</span>
+        </h2>
+
+        <div class="member-grid">
+
+            <!-- MARTIN -->
+
+            <div class="member">
+
+                <img
+                    src="https://image.idntimes.com/post/20251228/snapinsta-ai_3712677767109671095_664b706b-e5be-4929-b2cc-01441d8338b7.jpg"
+                    alt="CORTIS Martin"
+                >
+
+                <div class="member-info">
+                    <h3>MARTIN</h3>
+                    <p>20 MARCH 2008</p>
+                </div>
+
+            </div>
+
+
+            <!-- JAMES -->
+
+            <div class="member">
+
+                <img
+                    src="https://api.ananweb.jp/wp-content/uploads/2025/08/d4e15fdccfd14ecfb09b19c13425fc6c.jpg"
+                    alt="CORTIS James"
+                >
+
+                <div class="member-info">
+                    <h3>JAMES</h3>
+                    <p>14 OCTOBER 2005</p>
+                </div>
+
+            </div>
+
+
+            <!-- JUHOON -->
+
+            <div class="member">
+
+                <img
+                    src="https://cdn2.tuoitre.vn/471584752817336320/2026/2/4/edit-cortis-spur-17701977804221053335185.jpeg"
+                    alt="CORTIS Juhoon"
+                >
+
+                <div class="member-info">
+                    <h3>JUHOON</h3>
+                    <p>3 JANUARY 2008</p>
+                </div>
+
+            </div>
+
+
+            <!-- SEONGHYEON -->
+
+            <div class="member">
+
+                <img
+                    src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202604/cortis-unveils-redred-224031522-16x9_0.jpeg"
+                    alt="CORTIS Seonghyeon"
+                >
+
+                <div class="member-info">
+                    <h3>SEONGHYEON</h3>
+                    <p>13 JANUARY 2009</p>
+                </div>
+
+            </div>
+
+
+            <!-- KEONHO -->
+
+            <div class="member">
+
+                <img
+                    src="https://i.vietgiaitri.com/2026/8/24/nhom-cortis-tiet-lo-ve-san-pham-am-nhac-ky-niem-ngay-ra-mat-b59-7758420.webp"
+                    alt="CORTIS Keonho"
+                >
+
+                <div class="member-info">
+                    <h3>KEONHO</h3>
+                    <p>14 FEBRUARY 2009</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CREATOR -->
+
+    <section class="creator">
+
+        <h2>YOUNG CREATOR CREW</h2>
+
+        <p>
+            CORTIS isn't just about performing.
+            The members actively take part in the creative process,
+            including songwriting, choreography, video production
+            and visual direction.
+            Their identity is built around creating together
+            and expressing their own ideas.
+        </p>
+
+    </section>
+
+
+    <!-- ALBUMS -->
+
+    <section class="albums" id="albums">
+
+        <h2 class="section-title">
+            <span>MUSIC</span>
+        </h2>
+
+        <div class="album-grid">
+
+            <div class="album">
+
+                <h3>
+                    COLOR OUTSIDE THE LINES
+                </h3>
+
+                <div class="date">
+                    THE 1ST EP
+                </div>
+
+                <p>
+                    CORTIS's debut release explores the group's
+                    desire to discover what they truly want and
+                    create their own path.
+                </p>
+
+                <div class="songs">
+                    <span class="song">GO!</span>
+                    <span class="song">What You Want</span>
+                    <span class="song">FaSHioN</span>
+                    <span class="song">JoyRide</span>
+                    <span class="song">Lullaby</span>
+                </div>
+
+            </div>
+
+
+            <div class="album">
+
+                <h3>
+                    GREENGREEN
+                </h3>
+
+                <div class="date">
+                    THE 2ND EP • 2026
+                </div>
+
+                <p>
+                    GREENGREEN continues CORTIS's creative journey,
+                    focusing on their evolving identity, tastes,
+                    experiences and ideas.
+                </p>
+
+                <div class="songs">
+                    <span class="song">TNT</span>
+                    <span class="song">REDRED</span>
+                    <span class="song">ACAI</span>
+                    <span class="song">YOUNGCREATORCREW</span>
+                    <span class="song">Wassup</span>
+                    <span class="song">Blue Lips</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRACK LIST -->
+
+    <section class="tracks">
+
+        <h2 class="section-title">
+            TOP <span>TRACKS</span>
+        </h2>
+
+        <div class="track-list">
+
+            <div class="track">
+                <div>
+                    <span class="track-number">01</span>
+                    <span class="track-name">GO!</span>
+                </div>
+                <span>COLOR OUTSIDE THE LINES</span>
+            </div>
+
+            <div class="track">
+                <div>
+                    <span class="track-number">02</span>
+                    <span class="track-name">What You Want</span>
+                </div>
+                <span>COLOR OUTSIDE THE LINES</span>
+            </div>
+
+            <div class="track">
+                <div>
+                    <span class="track-number">03</span>
+                    <span class="track-name">FaSHioN</span>
+                </div>
+                <span>COLOR OUTSIDE THE LINES</span>
+            </div>
+
+            <div class="track">
+                <div>
+                    <span class="track-number">04</span>
+                    <span class="track-name">JoyRide</span>
+                </div>
+                <span>COLOR OUTSIDE THE LINES</span>
+            </div>
+
+            <div class="track">
+                <div>
+                    <span class="track-number">05</span>
+                    <span class="track-name">REDRED</span>
+                </div>
+                <span>GREENGREEN</span>
+            </div>
+
+            <div class="track">
+                <div>
+                    <span class="track-number">06</span>
+                    <span class="track-name">TNT</span>
+                </div>
+                <span>GREENGREEN</span>
+            </div>
+
+            <div class="track">
+                <div>
+                    <span class="track-number">07</span>
+                    <span class="track-name">Blue Lips</span>
+                </div>
+                <span>GREENGREEN</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALLERY -->
+
+    <section class="gallery" id="gallery">
+
+        <h2 class="section-title">
+            CORTIS <span>GALLERY</span>
+        </h2>
+
+        <div class="gallery-grid">
+
+            <img
+                src="https://cdn2.tuoitre.vn/471584752817336320/2026/2/4/edit-cortis-spur-17701977804221053335185.jpeg"
+                alt="CORTIS"
+            >
+
+            <img
+                src="https://api.ananweb.jp/wp-content/uploads/2025/08/d4e15fdccfd14ecfb09b19c13425fc6c.jpg"
+                alt="CORTIS"
+            >
+
+            <img
+                src="https://image.idntimes.com/post/20251228/snapinsta-ai_3712677767109671095_664b706b-e5be-4929-b2cc-01441d8338b7.jpg"
+                alt="CORTIS"
+            >
+
+            <img
+                src="https://i.vietgiaitri.com/2026/8/24/nhom-cortis-tiet-lo-ve-san-pham-am-ky-niem-ngay-ra-mat-b59-7758420.webp"
+                alt="CORTIS"
+            >
+
+            <img
+                src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202604/cortis-unveils-redred-224031522-16x9_0.jpeg"
+                alt="CORTIS"
+            >
+
+            <img
+                src="https://www.musicmundial.com/en/wp-content/uploads/2025/09/Best-debut-of-the-year-CORTIS-earns-the-highest-selling-album-in-first-day-sales-among-all-Kpop-rookies-1024x683.jpg"
+                alt="CORTIS"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="quote">
+
+        <h2>
+            DON'T FOLLOW THE LINES.
+            <br>
+            <span>COLOR OUTSIDE THEM.</span>
+        </h2>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>CORTIS</h2>
+
+        <p>
+            MARTIN • JAMES • JUHOON • SEONGHYEON • KEONHO
+        </p>
+
+        <p>
+            COLOR OUTSIDE THE LINES
+        </p>
+
+        <p>
+            © 2026 CORTIS FAN PAGE
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
